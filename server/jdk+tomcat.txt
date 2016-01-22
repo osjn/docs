@@ -1,0 +1,3 @@
+有很多种方式，比如设置服务，或者使用 rc.local 进行加载。
+修改 /etc/rc.d/rc.local 文件:
+vim /etc/rc.d/rc.local
