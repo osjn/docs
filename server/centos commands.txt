@@ -14,3 +14,6 @@ nginx作为http服务器的时候：
 nginx作为反向代理服务器的时候：
   max_clients = worker_processes * worker_connections/4
   
+ps -ef | grep tomcat
+netstat -tupln | grep 4399
+kill -s 9
