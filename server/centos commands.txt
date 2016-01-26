@@ -1,5 +1,5 @@
 查看系统安装了哪些程序: rpm –aq
-卸载软件包：rpm –e 包名
+卸载软件包：rpm –e package_name
 查看软件安装路径: whereis
 查看系统版本： cat /etc/redhat-release
 查看当前操作系统内核信息：cat /proc/version / uname -a/-r
@@ -14,6 +14,12 @@ nginx作为http服务器的时候：
 nginx作为反向代理服务器的时候：
   max_clients = worker_processes * worker_connections/4
   
-ps -ef | grep tomcat
-netstat -tupln | grep 4399
-kill -s 9
+ps -ef | grep package_name
+netstat -tupln | grep pid
+kill -s 9 pid
+
+update-alternatives --install /usr/bin/java java /home/software/jdk7.0/bin/java 60
+update-alternatives --config java
+
+vi /etc/profile
+source /etc/profile
