@@ -1,3 +1,11 @@
 有很多种方式，比如设置服务，或者使用 rc.local 进行加载。
 修改 /etc/rc.d/rc.local 文件:
 vim /etc/rc.d/rc.local
+
+vi /etc/profile
+JAVA_HOME=/usr/java/jdk1.7.0_67/
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME CLASSPATH PATH
+
+source /etc/profile
