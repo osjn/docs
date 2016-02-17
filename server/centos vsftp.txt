@@ -26,7 +26,7 @@
     chroot_list_enable=YES
     chroot_list_file=/etc/vsftpd/chroot_list
     listen=YES
-    user_config_dir=/etc/vsftpd/ userconfig/ 用户配置路径，手动添加此项
+    user_config_dir=/etc/vsftpd/userconfig/ 用户配置路径，手动添加此项
     pam_service_name=vsftpd
     userlist_enable=YES
     tcp_wrappers=YES
@@ -52,7 +52,7 @@
 
     vim /etc/vsftpd/chroot_list
     添加 xiaohu 即可
-
+(chown -R 755 xiaohu /data/xiaohu)
 
 8、重启vsftpd服务即可
 
