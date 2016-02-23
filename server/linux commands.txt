@@ -1,1 +1,27 @@
 change password: passwd
+
+Apache如何添加二级域名
+
+httpd.conf 中需要打开mod_rewrite功能（关于URL重定向的具体说明，可以参照.htaccess使用方法总结），具体操作就是，在httpd.conf 的最后，添加以下内容：
+
+RewriteEngine on
+
+RewriteMap lowercase int:tolower
+
+RewriteMap vhost txt:/usr/local/etc/apache/vhost.map
+
+RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$
+
+RewriteCond ${vhost:%1} ^(/.*)$
+
+RewriteRule ^/(.*)$ %1/$1
+
+其中的 /usr/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改（例如在/etc/httpd/下面）。然后，在这个所在路径的目录下创建一个文件： vhost.map，内容为：
+
+www.minidx.com /usr/local/www/minidx.com
+
+www.ntt.cc /usr/local/www/ntt.cc
+
+blog.minidx.com /usr/local/www/minidx.com/blog
+
+最后，在网站根目录 /usr/local/www/下，创建对应目录就可以了。如果需要增加，修改或者删除域名，子域名，仅仅需要更改vhost.map文件，而不用重启apache进程。
