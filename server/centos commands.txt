@@ -23,3 +23,10 @@ update-alternatives --config java
 
 vi /etc/profile
 source /etc/profile
+
+RewriteEngine on
+RewriteMap lowercase int:tolower
+RewriteMap vhost txt:/etc/httpd/conf/vhost.map
+RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$
+RewriteCond ${vhost:%1} ^(/.*)$
+RewriteRule ^/(.*)$ %1/$1
